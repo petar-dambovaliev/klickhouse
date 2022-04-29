@@ -1,3 +1,5 @@
+extern crate core;
+
 /// Clickhouse major version
 pub const VERSION_MAJOR: u64 = 21;
 /// Clickhouse minor version

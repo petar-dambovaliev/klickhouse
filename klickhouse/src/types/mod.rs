@@ -867,7 +867,7 @@ impl Type {
                         | Type::Array(_)
                 ) {
                     return Err(anyhow!(
-                        "value in map must be String, FixedString(n), integer, or array"
+                        "value in map must be String, FixedString(n), integer, or array, given {:#?}", value
                     ));
                 }
                 value.validate(dimensions + 1)?;

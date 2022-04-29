@@ -38,3 +38,24 @@ pub trait Row: Sized {
 
     fn serialize_row(self) -> Result<Vec<(&'static str, Value)>>;
 }
+
+impl Row for bool {
+    fn deserialize_row(map: Vec<(&str, &Type, Value)>) -> Result<Self> {
+        if map.len() != 1 {
+            return Err(anyhow!("boolean result should have len 1"));
+        }
+        for (_name, _ttype, value) in map {
+            if let Value::UInt8(v) = value {
+                return Ok(match v {
+                    1 => true,
+                    _ => false,
+                });
+            }
+        }
+        Err(anyhow!("touch luck"))
+    }
+
+    fn serialize_row(self) -> Result<Vec<(&'static str, Value)>> {
+        panic!("not implemented");
+    }
+}

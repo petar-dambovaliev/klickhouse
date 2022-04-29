@@ -59,14 +59,14 @@ async fn test_client() {
     let client = Client::connect("127.0.0.1:9000", ClientOptions::default())
         .await
         .unwrap();
-    let mut names = client
-        .query::<TestType>("select * from test_types;")
-        .await
-        .unwrap();
-    while let Some(name) = names.next().await {
-        let name = name.unwrap();
-        println!("name = {:?}", name);
-    }
+    // let mut names = client
+    //     .query::<TestType>("select * from test_types;")
+    //     .await
+    //     .unwrap();
+    // while let Some(name) = names.next().await {
+    //     let name = name.unwrap();
+    //     println!("name = {:?}", name);
+    // }
 
     println!("begin insert");
 
